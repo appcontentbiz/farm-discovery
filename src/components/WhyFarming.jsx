@@ -7,37 +7,34 @@ import {
   Grid,
   Container
 } from '@mui/material';
+import { motion } from 'framer-motion';
 import {
   LocalDining,
-  Eco,
+  Park,
   People,
   AccountBalance
 } from '@mui/icons-material';
 
 const benefits = [
   {
-    title: 'Personal Well-being',
-    icon: LocalDining,
-    description: 'Grow your own fresh, nutritious food while enjoying a fulfilling outdoor activity that reduces stress and improves mental health.',
-    image: '/images/wellbeing.jpg'
+    title: 'Fresh, Healthy Food',
+    description: 'Grow your own organic produce and know exactly what goes into your food.',
+    icon: LocalDining
   },
   {
     title: 'Environmental Impact',
-    icon: Eco,
-    description: 'Be part of the solution! Reduce food miles, support biodiversity, and help create a more sustainable food system.',
-    image: '/images/environment.jpg'
+    description: 'Reduce your carbon footprint and contribute to a more sustainable future.',
+    icon: Park
   },
   {
     title: 'Community Connection',
-    icon: People,
-    description: 'Join a vibrant community of growers, share knowledge, and build meaningful connections with like-minded people.',
-    image: '/images/community.jpg'
+    description: 'Join a vibrant community of local farmers and food enthusiasts.',
+    icon: People
   },
   {
-    title: 'Economic Opportunity',
-    icon: AccountBalance,
-    description: 'Start small and grow big! From saving on groceries to building a profitable business, farming offers various economic benefits.',
-    image: '/images/economic.jpg'
+    title: 'Economic Benefits',
+    description: 'Save money on groceries or potentially start a profitable business.',
+    icon: AccountBalance
   }
 ];
 
@@ -45,50 +42,62 @@ export default function WhyFarming() {
   return (
     <Container maxWidth="lg">
       <Box sx={{ py: 6 }}>
-        <Typography variant="h3" align="center" gutterBottom>
+        <Typography
+          variant="h3"
+          component="h2"
+          gutterBottom
+          align="center"
+          color="primary"
+          sx={{ mb: 4 }}
+        >
           Why Start Farming?
         </Typography>
-        <Typography variant="h6" align="center" color="text.secondary" paragraph sx={{ mb: 6 }}>
-          Discover the many rewards of growing your own food
-        </Typography>
-
         <Grid container spacing={4}>
-          {benefits.map((benefit) => (
-            <Grid item xs={12} md={6} key={benefit.title}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardMedia
-                  component="img"
-                  height="200"
-                  image={benefit.image}
-                  alt={benefit.title}
-                  sx={{ objectFit: 'cover' }}
-                />
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                    <Box sx={{ color: 'primary.main', mr: 2 }}>
-                      {benefit.icon}
-                    </Box>
-                    <Typography variant="h5" component="h2">
-                      {benefit.title}
-                    </Typography>
-                  </Box>
-                  <Typography variant="body1" color="text.secondary">
-                    {benefit.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon;
+            return (
+              <Grid item xs={12} sm={6} md={3} key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      p: 2,
+                    }}
+                  >
+                    <Icon
+                      sx={{
+                        fontSize: 48,
+                        color: 'primary.main',
+                        mb: 2,
+                      }}
+                    />
+                    <CardContent>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="h3"
+                        sx={{ mb: 2 }}
+                      >
+                        {benefit.title}
+                      </Typography>
+                      <Typography variant="body1" color="text.secondary">
+                        {benefit.description}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            );
+          })}
         </Grid>
-
-        <Box sx={{ mt: 6, textAlign: 'center' }}>
-          <Typography variant="h5" gutterBottom>
-            "The best time to start was yesterday. The second best time is today."
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Join thousands of others who have discovered the joy of growing their own food
-          </Typography>
-        </Box>
       </Box>
     </Container>
   );
