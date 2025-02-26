@@ -5,7 +5,6 @@ import {
   CardContent,
   Typography,
   Grid,
-  CardMedia,
   Container
 } from '@mui/material';
 import {
@@ -18,25 +17,25 @@ import {
 const benefits = [
   {
     title: 'Personal Well-being',
-    icon: <LocalDining sx={{ fontSize: 40 }} />,
+    icon: LocalDining,
     description: 'Grow your own fresh, nutritious food while enjoying a fulfilling outdoor activity that reduces stress and improves mental health.',
     image: '/images/wellbeing.jpg'
   },
   {
     title: 'Environmental Impact',
-    icon: <Eco sx={{ fontSize: 40 }} />,
+    icon: Eco,
     description: 'Be part of the solution! Reduce food miles, support biodiversity, and help create a more sustainable food system.',
     image: '/images/environment.jpg'
   },
   {
     title: 'Community Connection',
-    icon: <People sx={{ fontSize: 40 }} />,
+    icon: People,
     description: 'Join a vibrant community of growers, share knowledge, and build meaningful connections with like-minded people.',
     image: '/images/community.jpg'
   },
   {
     title: 'Economic Opportunity',
-    icon: <AccountBalance sx={{ fontSize: 40 }} />,
+    icon: AccountBalance,
     description: 'Start small and grow big! From saving on groceries to building a profitable business, farming offers various economic benefits.',
     image: '/images/economic.jpg'
   }
