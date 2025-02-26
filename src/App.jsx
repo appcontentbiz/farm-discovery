@@ -6,6 +6,9 @@ import InteractiveFarmExplorer from './components/InteractiveFarmExplorer';
 import WhyFarming from './components/WhyFarming';
 import SuccessStories from './components/SuccessStories';
 import FarmingQuiz from './components/FarmingQuiz';
+import UrbanWindowGarden from './components/UrbanWindowGarden';
+import BalconyGarden from './components/BalconyGarden';
+import BackyardGarden from './components/BackyardGarden';
 import Navbar from './components/Navbar';
 
 // Update document title
@@ -69,18 +72,13 @@ function App() {
           <Navbar />
           <Container maxWidth="lg" sx={{ py: 4 }}>
             <Routes>
-              <Route path="/" element={
-                <Box>
-                  <InteractiveFarmExplorer />
-                  <WhyFarming />
-                  <SuccessStories />
-                  <FarmingQuiz />
-                </Box>
-              } />
-              <Route path="/explore" element={<InteractiveFarmExplorer />} />
+              <Route path="/" element={<InteractiveFarmExplorer />} />
               <Route path="/why-farming" element={<WhyFarming />} />
               <Route path="/success-stories" element={<SuccessStories />} />
               <Route path="/quiz" element={<FarmingQuiz />} />
+              <Route path="/urban-window" element={<UrbanWindowGarden />} />
+              <Route path="/balcony-garden" element={<BalconyGarden />} />
+              <Route path="/backyard-garden" element={<BackyardGarden />} />
             </Routes>
           </Container>
         </Box>

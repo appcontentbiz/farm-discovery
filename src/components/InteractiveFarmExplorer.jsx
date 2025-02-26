@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import { motion } from 'framer-motion';
 import { NavigateNext, NavigateBefore } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const farmTypes = [
   {
@@ -20,7 +21,8 @@ const farmTypes = [
     difficulty: 'Super Easy',
     spaceNeeded: 'Just a sunny window',
     timeCommitment: '5 minutes daily',
-    image: '/images/window-garden.jpg',
+    image: require('./images/window-garden.jpg'),
+    route: '/urban-window',
     quickStart: [
       'Choose a sunny window',
       'Get 2-3 small pots',
@@ -35,7 +37,8 @@ const farmTypes = [
     difficulty: 'Easy',
     spaceNeeded: 'A balcony or patio',
     timeCommitment: '10 minutes daily',
-    image: '/images/balcony-garden.jpg',
+    image: require('./images/balcony-garden.jpg'),
+    route: '/balcony-garden',
     quickStart: [
       'Check sunlight hours',
       'Get large containers',
@@ -50,7 +53,8 @@ const farmTypes = [
     difficulty: 'Medium',
     spaceNeeded: '100+ square feet',
     timeCommitment: '30 minutes daily',
-    image: '/images/backyard-garden.jpg',
+    image: require('./images/backyard-garden.jpg'),
+    route: '/backyard-garden',
     quickStart: [
       'Test your soil',
       'Plan your layout',
@@ -62,6 +66,7 @@ const farmTypes = [
 
 export default function InteractiveFarmExplorer() {
   const [currentFarm, setCurrentFarm] = useState(0);
+  const navigate = useNavigate();
 
   const handleNext = () => {
     setCurrentFarm((prev) => (prev + 1) % farmTypes.length);
@@ -69,6 +74,10 @@ export default function InteractiveFarmExplorer() {
 
   const handlePrev = () => {
     setCurrentFarm((prev) => (prev - 1 + farmTypes.length) % farmTypes.length);
+  };
+
+  const handleLearnMore = () => {
+    navigate(farmTypes[currentFarm].route);
   };
 
   return (
@@ -128,7 +137,11 @@ export default function InteractiveFarmExplorer() {
               </Box>
 
               <Box sx={{ display: 'flex', justifyContent: 'center', mt: 3 }}>
-                <Button variant="contained" color="primary">
+                <Button 
+                  variant="contained" 
+                  color="primary"
+                  onClick={handleLearnMore}
+                >
                   Learn More About This Style
                 </Button>
               </Box>
