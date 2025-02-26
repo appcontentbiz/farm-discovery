@@ -1,7 +1,9 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Box, Container } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import InteractiveFarmExplorer from './components/InteractiveFarmExplorer';
 import WhyFarming from './components/WhyFarming';
 import SuccessStories from './components/SuccessStories';
@@ -22,9 +24,9 @@ const theme = createTheme({
       dark: '#005005',
     },
     secondary: {
-      main: '#ff8f00', // Orange
-      light: '#ffc046',
-      dark: '#c56000',
+      main: '#558b2f', // Orange
+      light: '#85bb5c',
+      dark: '#255d00',
     },
     background: {
       default: '#fafafa',
@@ -68,19 +70,29 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: 'background.default' }}>
           <Navbar />
-          <Container maxWidth="lg" sx={{ py: 4 }}>
-            <Routes>
-              <Route path="/" element={<InteractiveFarmExplorer />} />
-              <Route path="/why-farming" element={<WhyFarming />} />
-              <Route path="/success-stories" element={<SuccessStories />} />
-              <Route path="/quiz" element={<FarmingQuiz />} />
-              <Route path="/urban-window" element={<UrbanWindowGarden />} />
-              <Route path="/balcony-garden" element={<BalconyGarden />} />
-              <Route path="/backyard-garden" element={<BackyardGarden />} />
-            </Routes>
-          </Container>
+          <Box component="main" sx={{ flexGrow: 1, py: 3 }}>
+            <Container maxWidth="lg">
+              <Routes>
+                <Route path="/" element={
+                  <Box>
+                    <InteractiveFarmExplorer />
+                    <WhyFarming />
+                    <SuccessStories />
+                    <FarmingQuiz />
+                  </Box>
+                } />
+                <Route path="/explore" element={<InteractiveFarmExplorer />} />
+                <Route path="/why-farming" element={<WhyFarming />} />
+                <Route path="/success-stories" element={<SuccessStories />} />
+                <Route path="/quiz" element={<FarmingQuiz />} />
+                <Route path="/urban-window" element={<UrbanWindowGarden />} />
+                <Route path="/balcony-garden" element={<BalconyGarden />} />
+                <Route path="/backyard-garden" element={<BackyardGarden />} />
+              </Routes>
+            </Container>
+          </Box>
         </Box>
       </Router>
     </ThemeProvider>

@@ -21,7 +21,7 @@ const farmTypes = [
     difficulty: 'Super Easy',
     spaceNeeded: 'Just a sunny window',
     timeCommitment: '5 minutes daily',
-    image: require('./images/window-garden.jpg'),
+    image: 'https://images.unsplash.com/photo-1521334884684-d80222895322?w=800',
     route: '/urban-window',
     quickStart: [
       'Choose a sunny window',
@@ -37,7 +37,7 @@ const farmTypes = [
     difficulty: 'Easy',
     spaceNeeded: 'A balcony or patio',
     timeCommitment: '10 minutes daily',
-    image: require('./images/balcony-garden.jpg'),
+    image: 'https://images.unsplash.com/photo-1422192807487-5caca5f79b5f?w=800',
     route: '/balcony-garden',
     quickStart: [
       'Check sunlight hours',
@@ -53,7 +53,7 @@ const farmTypes = [
     difficulty: 'Medium',
     spaceNeeded: '100+ square feet',
     timeCommitment: '30 minutes daily',
-    image: require('./images/backyard-garden.jpg'),
+    image: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800',
     route: '/backyard-garden',
     quickStart: [
       'Test your soil',
@@ -151,13 +151,27 @@ export default function InteractiveFarmExplorer() {
 
         <IconButton
           onClick={handlePrev}
-          sx={{ position: 'absolute', left: 0, top: '50%', transform: 'translateY(-50%)' }}
+          sx={{ 
+            position: 'absolute', 
+            left: { xs: -20, sm: -40 }, 
+            top: '50%', 
+            transform: 'translateY(-50%)',
+            bgcolor: 'background.paper',
+            '&:hover': { bgcolor: 'background.paper' }
+          }}
         >
           <NavigateBefore />
         </IconButton>
         <IconButton
           onClick={handleNext}
-          sx={{ position: 'absolute', right: 0, top: '50%', transform: 'translateY(-50%)' }}
+          sx={{ 
+            position: 'absolute', 
+            right: { xs: -20, sm: -40 }, 
+            top: '50%', 
+            transform: 'translateY(-50%)',
+            bgcolor: 'background.paper',
+            '&:hover': { bgcolor: 'background.paper' }
+          }}
         >
           <NavigateNext />
         </IconButton>

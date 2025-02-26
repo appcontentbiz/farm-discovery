@@ -29,21 +29,26 @@ export default function Navbar() {
   ];
 
   return (
-    <AppBar position="sticky" color="default" elevation={1}>
+    <AppBar position="sticky" sx={{ backgroundColor: 'background.paper' }}>
       <Container maxWidth="lg">
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: 'space-between', py: 1 }}>
           <Button
             component={RouterLink}
             to="/"
             color="primary"
-            sx={{ textTransform: 'none' }}
+            sx={{ 
+              textTransform: 'none',
+              '&:hover': {
+                backgroundColor: 'transparent'
+              }
+            }}
           >
             <Typography variant="h6" color="primary" sx={{ fontWeight: 'bold' }}>
               Farm Discovery
             </Typography>
           </Button>
 
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 } }}>
             {navItems.map((item) => (
               <Button
                 key={item.path}
@@ -55,6 +60,10 @@ export default function Navbar() {
                   display: 'flex',
                   alignItems: 'center',
                   minWidth: isMobile ? 'auto' : undefined,
+                  px: isMobile ? 1 : 2,
+                  '&:hover': {
+                    backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                  }
                 }}
               >
                 {isMobile ? item.icon : item.text}
