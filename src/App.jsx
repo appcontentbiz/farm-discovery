@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// Update document title
+document.title = 'Farm Discovery - Start Your Farming Journey';
+
 function App() {
   const [count, setCount] = useState(0)
 
