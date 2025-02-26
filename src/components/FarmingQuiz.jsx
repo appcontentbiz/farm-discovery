@@ -105,10 +105,9 @@ export default function FarmingQuiz() {
   };
 
   const getRecommendation = () => {
-    // Simple recommendation logic - can be made more sophisticated
     const space = answers[0];
     const time = answers[1];
-    const key = \`\${space}-\${time}\`;
+    const key = space + '-' + time;
     return recommendations[key] || recommendations['windowsill-minimal'];
   };
 
